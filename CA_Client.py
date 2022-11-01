@@ -99,7 +99,9 @@ class Manager:
 
         self.master.attributes('-fullscreen', True)
         self.master.attributes('-topmost', True)
-        self.master.wm_attributes('-transparentcolor', 'white')
+        # self.master.wm_attributes('-transparentcolor', 'white')
+        self.master.wm_attributes('-fullscreen')
+
 
         self.screen_info = get_monitors()[0]
         self.screen_width = self.screen_info.width
@@ -156,7 +158,8 @@ class Manager:
 if __name__ == '__main__':
     manager = Manager()
 
-    ip = '133.68.35.155'
+    ip = '133.68.35.141'
+    # ip='192.168.1.9'
     port = 8888
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
