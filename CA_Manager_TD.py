@@ -16,10 +16,11 @@ class Client:
     def receive(self):
         try:
             data,address= self.sock.recvfrom(self.buf)
-            self.data = pickle.loads(data)
+            # self.data = pickle.loads(data)
+            self.data=data.decode()
         except socket.timeout:
-            # self.data = {}
-            pass
+            self.data = {}
+            
         return self.data
 
 class Move:
