@@ -18,7 +18,8 @@ class Client:
             data,address= self.sock.recvfrom(self.buf)
             self.data = pickle.loads(data)
         except socket.timeout:
-            self.data = {}
+            # self.data = {}
+            pass
         return self.data
 
 class Move:
