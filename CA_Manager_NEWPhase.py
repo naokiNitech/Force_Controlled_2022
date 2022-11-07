@@ -1,25 +1,25 @@
 from concurrent.futures import ThreadPoolExecutor
-import socket
+from socket import socket, AF_INET, SOCK_DGRAM
 import pickle
 from xarm.wrapper import XArmAPI
 
-class Client:
-    def __init__(self, port) -> None:
-        self.ip = ''
-        self.port = port
-        self.buf = 1024
+# class Client:
+#     def __init__(self, port) -> None:
+#         self.ip = ''
+#         self.port = port
+#         self.buf = 1024
 
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.sock.bind((self.ip, self.port))
-        self.sock.settimeout(0.0001)
+#         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#         self.sock.bind((self.ip, self.port))
+#         self.sock.settimeout(0.0001)
 
-    def receive(self):
-        try:
-            data = self.sock.recv(self.buf)
-            self.data = pickle.loads(data)
-        except socket.timeout:
-            self.data = {}
-        return self.data
+#     def receive(self):
+#         try:
+#             data = self.sock.recv(self.buf)
+#             self.data = pickle.loads(data)
+#         except socket.timeout:
+#             self.data = {}
+#         return self.data
 
 class Move:
     def __init__(self, button, frequency=30, length=50) -> None:
@@ -147,8 +147,8 @@ class RobotControll:
 if __name__ == '__main__':
     pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='thread')
 
-    client_1 = Client(port=8888)
-    client_2 = Client(port=9999)
+    # client_1 = Client(port=8888)
+    # client_2 = Client(port=9999)
 
     receive_1 = []
     receive_2 = []
@@ -206,17 +206,19 @@ if __name__ == '__main__':
     PORT = 6000
 
     # ソケットを用意
-    s = socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s = socket(AF_INET,SOCK_DGRAM)
     # バインドしておく
     s.bind((HOST, PORT))
 
     while True:
-        try:    
-            receive_1.append(pool.submit(client_1.receive))
-            data_1 = receive_1[-1].result()
+        try:
+            data_1=0
+            data_2=0    
+            # receive_1.append(pool.submit(client_1.receive))
+            # data_1 = receive_1[-1].result()
 
-            receive_2.append(pool.submit(client_2.receive))
-            data_2 = receive_2[-1].result()
+            # receive_2.append(pool.submit(client_2.receive))
+            # data_2 = receive_2[-1].result()
 
             m_front_1.liner(data_1, s_front, 0)
             m_right_1.liner(data_1, s_right, 1, '-')
