@@ -34,8 +34,10 @@ if __name__ == '__main__':
     while True:
         # 受信
         # print('a')
-        msg= s.recv(1024)
-        msg=pickle.loads(msg)
+        msg,adress= s.recvfrom(1024)
+        msg=msg.decode()
+        # msg=msg.encode()
+        # msg=pickle.loads(msg)
         print(msg)
 
 

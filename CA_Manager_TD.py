@@ -152,6 +152,8 @@ if __name__ == '__main__':
     client_1 = Client(port=8888)
     client_2 = Client(port=9999)
 
+    print(client_1)
+
     receive_1 = []
     receive_2 = []
 
