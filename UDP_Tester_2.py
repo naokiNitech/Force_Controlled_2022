@@ -4,6 +4,7 @@ from screeninfo import get_monitors
 from pynput import mouse
 from PIL import Image, ImageTk
 import tkinter as tk
+from concurrent.futures import ThreadPoolExecutor
 
 
 if __name__ == '__main__':
@@ -30,15 +31,25 @@ if __name__ == '__main__':
     s = socket(AF_INET, SOCK_DGRAM)
     # バインドしておく
     s.bind((HOST, PORT))
-
+    pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='thread')
+    receive_1 = []
     while True:
         # 受信
         # print('a')
+        
+
         msg,adress= s.recvfrom(1024)
         msg=msg.decode()
         # msg=msg.encode()
         # msg=pickle.loads(msg)
-        print(msg)
+        # print('1')
+        # print(msg)
+
+        receive_1.append(pool.submit(msg))
+        print(receive_1)
+        data_1=receive_1[-1].result()
+        print(data_1)
+
 
 
         # udpが送信されていないとここで止まる↑
