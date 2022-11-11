@@ -211,7 +211,7 @@ if __name__ == '__main__':
     while True:
         try:    
             receive_1.append(pool.submit(client_1.receive))
-            print(receive_1)
+            # print(receive_1)
             data_1 = receive_1[-1].result()
 
             receive_2.append(pool.submit(client_2.receive))
