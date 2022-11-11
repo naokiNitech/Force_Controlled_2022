@@ -33,10 +33,11 @@ if __name__ == '__main__':
 
     while True:
         # 受信
-        print('a')
+        # print('a')
         msg, address = s.recvfrom(1024)
         # udpが送信されていないとここで止まる↑
-        print(f"message: {msg.decode()}\nfrom: {address}")
+        # print(f"message: {msg.decode()}\nfrom: {address}")
+        print(msg.decode())
 
         
         

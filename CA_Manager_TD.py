@@ -2,6 +2,7 @@ from concurrent.futures import ThreadPoolExecutor
 from socket import socket, AF_INET, SOCK_DGRAM
 import pickle
 from xarm.wrapper import XArmAPI
+import ast
 
 class Client:
     def __init__(self, port) -> None:
@@ -15,9 +16,11 @@ class Client:
 
     def receive(self):
         try:
-            data,self.adress= self.sock.recvfrom(self.buf)
-            # self.data = pickle.loads(data)
+            data= self.sock.recv(self.buf)
             self.data=data.decode()
+            self.data=self.data.replace('\x00','')
+            # 空白を削除していないとdict型に変換できない
+            self.data=ast.literal_eval(self.data)
         except socket.timeout:
             self.data = {}
             
@@ -149,7 +152,7 @@ class RobotControll:
 if __name__ == '__main__':
     pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='thread')
 
-    client_1 = Client(port=8888)
+    client_1 = Client(port=6000)
     client_2 = Client(port=9999)
 
 
