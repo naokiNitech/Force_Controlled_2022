@@ -1,5 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
-from socket import socket, AF_INET, SOCK_DGRAM
+import socket
 import pickle
 from xarm.wrapper import XArmAPI
 import ast
@@ -10,7 +10,7 @@ class Client:
         self.port = port
         self.buf = 1024
 
-        self.sock = socket(AF_INET, SOCK_DGRAM)
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.bind((self.ip, self.port))
         self.sock.settimeout(0.0001)
 
