@@ -92,7 +92,7 @@ class RobotControll:
         self.init_gripper_position = 650
         self.init_position = [self.initX, self.initY, self.initZ, self.initRoll, self.initPitch, self.initYaw]
 
-        self.ip = '192.168'
+        self.ip = '133.68.35.220'
         self.port = 7000
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
