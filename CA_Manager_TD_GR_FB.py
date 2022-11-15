@@ -9,7 +9,8 @@ class Client:
     def __init__(self, port) -> None:
         self.ip = ''
         self.port = port
-        self.buf = 1024
+        # self.buf = 1024
+        self.buf=512
 
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.bind((self.ip, self.port))
