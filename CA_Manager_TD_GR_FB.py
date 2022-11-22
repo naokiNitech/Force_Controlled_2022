@@ -75,10 +75,14 @@ class Move:
                 self.diff = next(self.iter)
                 if sign == '+':
                     # gripper += self.diff
-                    gripper+=2
+                    gripper+=6
+                    if gripper>800:
+                        gripper=800
                 elif sign == '-':
                     # gripper -= self.diff
-                    gripper-=2
+                    gripper-=6
+                    if gripper<0:
+                        gripper=0
             except StopIteration:
                 self.diff = 0
                 self.s_flag = 0
