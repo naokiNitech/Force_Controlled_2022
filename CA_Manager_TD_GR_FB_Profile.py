@@ -7,6 +7,7 @@ import threading
 
 # matplotlibライブラリをインポートする
 import matplotlib.pyplot as plt
+import csv
 
 
 class Client:
