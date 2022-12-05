@@ -177,23 +177,32 @@ class RobotControll:
         while True:
             try:
                 loadcell_val = self.arm.get_tgpio_analog(1)[1] - self.init_loadval
-                datapl = loadcell_val
+              
                 self.Loadcell=str(loadcell_val)
                 self.sock.sendto(self.Loadcell.encode(),(self.ip,self.port))
-
-                x=[]
-                y=[]
-                x.append(len(x))
-                y.append(datapl)
-
-                plt.plot(x,y)
-                plt.show
+                
             except:
                 loadcell_val = 0
+         
 
-        
+class Profile:
+    def __init__(self):
+        self.x=[]
+        self.y=[]
+        self.loadcell_profile()
+    
+    def loadcell_profile(self):
+        global loadcell_val
+        import matplotlib.pyplot as plt
+        while True:
+            self.x.append(len(self.x))
+            self.y.append(loadcell_val)
+            plt.plot(self.x,self.y)
+            plt.show
 
-# class Profile:
+    
+
+     
 
 
 if __name__ == '__main__':
