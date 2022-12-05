@@ -5,6 +5,10 @@ from xarm.wrapper import XArmAPI
 import ast
 import threading
 
+# matplotlibライブラリをインポートする
+import matplotlib.pyplot as plt
+
+
 class Client:
     def __init__(self, port) -> None:
         self.ip = ''
@@ -173,10 +177,24 @@ class RobotControll:
         while True:
             try:
                 loadcell_val = self.arm.get_tgpio_analog(1)[1] - self.init_loadval
+                datapl = loadcell_val
                 self.Loadcell=str(loadcell_val)
                 self.sock.sendto(self.Loadcell.encode(),(self.ip,self.port))
+
+                x=[]
+                y=[]
+                x.append(len(x))
+                y.append(datapl)
+
+                plt.plot(x,y)
+                plt.show
             except:
                 loadcell_val = 0
+
+        
+
+# class Profile:
+
 
 if __name__ == '__main__':
     pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='thread')
