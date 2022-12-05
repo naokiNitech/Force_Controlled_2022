@@ -90,7 +90,7 @@ class Move:
 class RobotControll:
     def __init__(self, isEnableArm=False) -> None:
         self.isEnableArm = isEnableArm
-        self.xArmIP = '192.168.1.240'
+        self.xArmIP = '192.168.1.217'
         self.initX, self.initY, self.initZ, self.initRoll, self.initPitch, self.initYaw = 200,0,400,180,0,0
         self.max_X, self.max_Y, self.max_Z = 460, 300, 300
         self.min_X, self.min_Y, self.min_Z = 180, -300, 70
