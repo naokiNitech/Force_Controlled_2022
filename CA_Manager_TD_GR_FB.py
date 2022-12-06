@@ -208,7 +208,8 @@ if __name__ == '__main__':
     s_close = 'close'
 
     m_front_1 = Move(s_front)
-    m_right_1 = Move(s_right)
+    # m_right_1 = Move(s_right)
+    m_right_1 = Move(s_up)
     # m_right_1 = Move(s_down, length=20)
     m_left_1 = Move(s_left)
     # m_left_1 = Move(s_up, length=20)
@@ -252,7 +253,8 @@ if __name__ == '__main__':
 
             m_front_1.liner(data_1, s_front, 0)
             # m_right_1.liner(data_1, s_right, 1, '-')
-            m_right_1.liner(data_1, s_right, 2, '-')
+            # m_right_1.liner(data_1, s_right, 2, '-')
+            m_right_1.liner(data_1, s_up, 2)
             # m_left_1.liner(data_1, s_left, 1)
             m_left_1.liner(data_1, s_up, 2)
             m_back_1.liner(data_1, s_back, 0, '-')
