@@ -252,7 +252,7 @@ if __name__ == '__main__':
 
             m_front_1.liner(data_1, s_front, 0)
             # m_right_1.liner(data_1, s_right, 1, '-')
-            m_right_1.liner(data_1, s_down, 2, '-')
+            m_right_1.liner(data_1, s_right, 2, '-')
             # m_left_1.liner(data_1, s_left, 1)
             m_left_1.liner(data_1, s_up, 2)
             m_back_1.liner(data_1, s_back, 0, '-')
