@@ -208,8 +208,10 @@ if __name__ == '__main__':
     s_close = 'close'
 
     m_front_1 = Move(s_front)
-    m_right_1 = Move(s_right)
-    m_left_1 = Move(s_left)
+    # m_right_1 = Move(s_right)
+    m_right_1 = Move(s_down, length=20)
+    # m_left_1 = Move(s_left)
+    m_left_1 = Move(s_up, length=20)
     m_back_1 = Move(s_back)
     m_pitch_plus_1 = Move(s_pitch_plus, length=15)
     m_pitch_minus_1 = Move(s_pitch_minus, length=15)
@@ -217,8 +219,10 @@ if __name__ == '__main__':
     m_yaw_minus_1 = Move(s_yaw_minus, length=15)
     m_roll_plus_1 = Move(s_roll_plus, length=15)
     m_roll_minus_1 = Move(s_roll_minus, length=15)
-    m_up_1 = Move(s_up, length=20)
-    m_down_1 = Move(s_down, length=20)
+    # m_up_1 = Move(s_up, length=20)
+    m_up_1 = Move(s_right, length=50)
+    # m_down_1 = Move(s_down, length=20)
+    m_down_1 = Move(s_left, length=50)
     m_open_1 = Move(s_open, frequency=10, length=100)
     m_close_1 = Move(s_close, frequency=10, length=100)
 
