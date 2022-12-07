@@ -252,10 +252,10 @@ if __name__ == '__main__':
             data_2 = receive_2[-1].result()
 
             m_front_1.liner(data_1, s_front, 0)
-            m_right_1.liner(data_1, s_right, 2, '-')
+            m_right_1.liner(data_1, s_right, 2)
             # m_right_1.liner(data_1, s_right, 2, '-')
             # m_right_1.liner(data_1, s_up, 2)
-            m_left_1.liner(data_1, s_left, 2)
+            m_left_1.liner(data_1, s_left, 2, '-')
             # m_left_1.liner(data_1, s_up, 2)
             m_back_1.liner(data_1, s_back, 0, '-')
             m_pitch_plus_1.liner(data_1, s_pitch_plus, 4)
