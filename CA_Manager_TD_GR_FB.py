@@ -164,7 +164,7 @@ class RobotControll:
         return modbus_data
 
     def loadcell_setup(self):
-        self.init_loadval = self.arm.get_tgpio_analog(0)[1] #analogポートの番号とそのデータリストのうちの1のデータを取り出す　これがロードセルの値の初期値
+        self.init_loadval = self.arm.get_cgpio_analog(0)[1] #analogポートの番号とそのデータリストのうちの1のデータを取り出す　これがロードセルの値の初期値
         self.load_thread = threading.Thread(target=self.get_loadcell_value, daemon=True)
         self.load_thread.start()
     
@@ -172,7 +172,7 @@ class RobotControll:
         global loadcell_val
         while True:
             try:
-                loadcell_val = self.arm.get_tgpio_analog(0)[1] - self.init_loadval
+                loadcell_val = self.arm.get_cgpio_analog(0)[1] - self.init_loadval
                 self.Loadcell=str(loadcell_val)
                 self.sock.sendto(self.Loadcell.encode(),(self.ip,self.port))
             except:
